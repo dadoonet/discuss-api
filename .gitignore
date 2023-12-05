@@ -1,7 +1,6 @@
 .env
 error.log
-cache
-cache_*.json
+debug.log
 
 bulks/
 topics/
