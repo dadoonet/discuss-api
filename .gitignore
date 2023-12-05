@@ -1,0 +1,9 @@
+.env
+error.log
+cache
+cache_*.json
+
+bulks/
+topics/
+
+
