@@ -1,0 +1,110 @@
+{
+  "index_patterns": ["bytes-discuss"],
+  "template": {
+    "settings": {
+      "number_of_shards": 1,
+      "number_of_replicas": 0,
+      "analysis": {
+        "analyzer": {
+          "html_analyzer": {
+            "tokenizer": "standard",
+            "char_filter": [
+              "html_strip"
+            ],
+            "filter": [
+              "lowercase"       
+            ]
+          }
+        }
+      }
+    },
+    "mappings": {
+      "properties": {
+        "category_name": {
+          "type": "keyword"
+        },
+        "duration": {
+          "type": "unsigned_long"
+        },
+        "question": {
+          "properties": {
+            "author": {
+              "properties": {
+                "avatar_template": {
+                  "type": "keyword",
+                  "index": false
+                },
+                "name": {
+                  "type": "text",
+                  "fields": {
+                    "keyword": {
+                      "type": "keyword"
+                    }
+                  }
+                },
+                "username": {
+                  "type": "keyword"
+                }
+              }
+            },
+            "date": {
+              "type": "date"
+            },
+            "reads": {
+              "type": "short"
+            },
+            "text": {
+              "type": "text",
+              "analyzer": "html_analyzer"
+            }
+          }
+        },
+        "solution": {
+          "properties": {
+            "author": {
+              "properties": {
+                "avatar_template": {
+                  "type": "keyword",
+                  "index": false
+                },
+                "name": {
+                  "type": "text",
+                  "fields": {
+                    "keyword": {
+                      "type": "keyword"
+                    }
+                  }
+                },
+                "username": {
+                  "type": "keyword"
+                }
+              }
+            },
+            "date": {
+              "type": "date"
+            },
+            "post_number": {
+              "type": "short"
+            },
+            "reads": {
+              "type": "short"
+            },
+            "text": {
+              "type": "text",
+              "analyzer": "html_analyzer"
+            }
+          }
+        },
+        "title": {
+          "type": "text"
+        },
+        "topic": {
+          "type": "unsigned_long"
+        }
+      }
+    }
+  },
+  "priority": 500
+}
+
+
